@@ -73,10 +73,64 @@ predictions.
 
 ## Detailed description
 
-Provide a detailed description of the problem in this section. This should
-detail what parameters characterise a problem instance, what characterises a
-solution, how a solution is evaluated (e.g. an objective function), and solution
-feasibility constraints.
+It is a non-linear subset selection optimization problem over local regression rules where the error term depends on the weighted mixture of predictions from selected rules.
+The rules are precomputed and remain fixed during solution composition.
+
+Given
+
+- Training data $(X, y)$ with input $X \in \mathbb{R}^{n \times d}$, target $y \in \mathbb{R}^n$
+- Rule pool $\mathbf{R} = \{r_1, r_2, ..., r_k\}$ with $k$ rules
+
+where each rule $r_i$ has
+
+- Binary match vector: $\mathbf{m}_i \in \{0,1\}^n$ where $m_{ij} = 1$ if rule $i$ matches sample $j$
+- Local prediction: $\hat{y}_{ij} \in \mathbb{R}$ (only defined when $m_{ij} = 1$)
+- Experience: $e_i = \sum_{j=1}^{n} m_{ij}$ (number of matched samples)
+- Error: $\varepsilon_i = \text{MSE}(y_i, \hat{y}_i)$ on its matched data
+
+find a set of rules $\mathbf{g} \in \{0,1\}^k$, where $g_i = 1$ if $r_i$ is included, that minimizes a combination of error and size of the rule set:
+
+$$
+f(\mathbf{g}) = \frac{(1 + \alpha^2) \cdot PA(\mathbf{g}) \cdot CN(\mathbf{g})}{\alpha^2 \cdot PA(\mathbf{g}) + CN(\mathbf{g})} \,,
+$$
+
+where $\alpha = 0.3$ is the scalarization weight.
+
+### Mixed Rule Set Prediction
+
+For training sample $j$, the prediction of the rule set is
+
+$$
+\hat{y}_j(\mathbf{g}) = \frac{\sum_{i=1}^{k} g_i \cdot m_{ij} \cdot \tau_i \cdot \hat{y}_{ij}}{\sum_{i=1}^{k} g_i \cdot m_{ij} \cdot \tau_i} \,,
+$$
+
+where
+- $\tau_i = \frac{1}{\varepsilon_i} \cdot e_i$ is the weight for rule $i$
+- If denominator is 0 (no rule matches), then $\hat{y}_j(\mathbf{g}) = \frac{1}{n}\sum_{i=1}^n y_i$ (mean training target)
+
+
+
+### Mixed Rule Set Error
+
+The error $\varepsilon$ is inverted using an exponential transformation:
+
+$$
+PA(\mathbf{g}) = \exp(-2 \cdot \varepsilon(\mathbf{g}))
+$$
+
+$$
+\varepsilon(\mathbf{g}) = \frac{1}{m} \sum_{j=1}^{m} (y_j - \hat{y}_j(\mathbf{g}))^2
+$$
+
+### Rule Set Size
+
+The rule set size is normalized and inverted:
+
+$$C(\mathbf{g}) = \sum_{i=1}^{k} g_i$$
+
+$$CN(\mathbf{g}) = 1 - \frac{C(\mathbf{g})}{k}$$
+
+
 
 ## Instance data file
 
