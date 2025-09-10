@@ -68,7 +68,8 @@ both systems have to solve to provide an accurate yet compact solution.
 
 ## Task
 
-Describe the high-level optimisation task in one or two sentences.
+Given a set of rules, select a minimal subset that can still make good 
+predictions.
 
 ## Detailed description
 
