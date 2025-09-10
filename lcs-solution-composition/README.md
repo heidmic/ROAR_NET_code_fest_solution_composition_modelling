@@ -1,5 +1,5 @@
 <!--
-SPDX-FileCopyrightText: 2024 Alexandre Jesus <me@adbjesus.com>
+SPDX-FileCopyrightText: 2025 Michael Heider <michael.heider@uni-a.de>, Helena Segherr, Jonathan Wurth 
 
 SPDX-License-Identifier: CC-BY-4.0
 -->
@@ -38,26 +38,33 @@ Template follows below.
 
 <!-- Remove the section above before submitting -->
 
-# Problem Name – Title
+# LCS Solution Composition
 
-First Author, Some Affiliation, Somewhere in the world  
-Second Author, Some Affiliation, Elsewhere
+Michael Heider, Universität Augsburg, Germany  
+Helena Stegherr, Universität Augsburg, Germany  
+Jonathatn Wurth, Universität Augsburg, Germany
 
 <!-- Put two empty spaces at the end of each author line except the last for
 proper formatting -->
 
-Copyright 2024 ... place copyright holders here.
+Copyright 2025 the authors.
 
-This document is licensed under XXXX.
+This document is licensed under CC-BY-4.0.
 
 <!-- Complete the above accordingly. Copyright and licensing information must be
-consistent with the comment at the beggining of the markdown file -->
+consistent with the comment at the beginning of the markdown file -->
 
 ## Introduction
 
-In this section provide a brief introduction of the problem, possibly including
-its motivation and context. This should be a short (2 or 3 paragraphs)
-high-level description.
+Learning Classifier Systems (LCSs) are a type of evolutionary machine learning 
+algorithm that constructs solutions to the learning task as a finite set of 
+rules each approximating a share of the input space. Some LCSs separate the 
+discovery of rules from the final composition of the model returned by the 
+training process, e.g. SupRB https://doi.org/10.1145/3520304.3529014 or 
+HEROS https://doi.org/10.1145/3712256.3726461. 
+
+This problem statement describes the combinatorial optimization problem that
+both systems have to solve to provide an accurate yet compact solution.
 
 ## Task
 
