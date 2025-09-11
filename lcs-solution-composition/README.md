@@ -18,7 +18,6 @@ not licensed under CC-BY-4.0 -->
 
 # Problem template
 
-
 This folder provides a template for problem statements.
 
 Replace the problem statement below according to the instructions within that
@@ -61,14 +60,14 @@ learning algorithm that constructs solutions to the learning task as a finite
 set of rules each approximating a share of the input space. Some LCSs separate 
 the discovery of rules from the final composition of the model returned by the 
 training process, e.g. SupRB [1, 2] https://doi.org/10.1145/3520304.3529014 
-or HEROS [6] https://doi.org/10.1145/3712256.3726461. 
+or HEROS [6] https://doi.org/10.1145/3712256.3726461.
 
 This problem statement describes the combinatorial optimization problem that
 both systems have to solve to provide an accurate yet compact solution.
 
 ## Task
 
-Given a set of rules, select a minimal subset that can still make good 
+Given a set of rules, select a minimal subset that can still make good
 predictions.
 
 ## Detailed description
@@ -76,6 +75,7 @@ predictions.
 It is a non-linear subset selection optimization problem over local regression 
 rules where the error term depends on the weighted mixture of predictions 
 from selected rules. 
+
 The rules are precomputed and remain fixed during solution composition.
 
 Given
@@ -93,28 +93,31 @@ where each rule $r_i$ has
 find the set of rules $\mathbf{g}^*$ that minimizes the prediction error while keeping the set as small as possible:
 
 $$
-f(\mathbf{g}) = \frac{(1 + \alpha^2) \cdot PA(\mathbf{g}) \cdot CN(\mathbf{g})}{\alpha^2 \cdot PA(\mathbf{g}) + CN(\mathbf{g})} \,,
+f(\mathbf{g}) = \frac{(1 + \alpha^2) \cdot PA(\mathbf{g}) \cdot CN(\mathbf{g})}{\alpha^2 \cdot PA(\mathbf{g}) + CN(
+\mathbf{g})} \,,
 $$
 
 $$
 \mathbf{g}^* \in \arg\max_{\mathbf{g}} f(\mathbf{g})
 $$
 
-where $\mathbf{g} \in \{0,1\}^k$ represents a rule set, with $g_i = 1$ if $r_i$ is included, and $\alpha = 0.3$ is the scalarization weight that decides relative influence of error and rule set size.
+where $\mathbf{g} \in \{0,1\}^k$ represents a rule set, with $g_i = 1$ if $r_i$ is included, and $\alpha = 0.3$ is the
+scalarization weight that decides relative influence of error and rule set size.
 
 ### Rule Set Prediction
 
 For training sample $j$, the prediction of the rule set is
 
 $$
-\hat{y}_j(\mathbf{g}) = \frac{\sum_{i=1}^{k} g_i \cdot m_{ij} \cdot \tau_i \cdot \hat{y}_{ij}}{\sum_{i=1}^{k} g_i \cdot m_{ij} \cdot \tau_i} \,,
+\hat{y}_j(\mathbf{g}) = \frac{\sum_{i=1}^{k} g_i \cdot m_{ij} \cdot \tau_i \cdot \hat{y}_{ij}}{\sum_{i=1}^{k} g_i \cdot
+m_{ij} \cdot \tau_i} \,,
 $$
 
 where
+
 - $\tau_i = \frac{1}{\varepsilon_i} \cdot e_i$ is the weight for rule $i$
-- If denominator is 0 (no rule matches), then $\hat{y}_j(\mathbf{g}) = \frac{1}{n}\sum_{i=1}^n y_i$ (mean training target)
-
-
+- If denominator is 0 (no rule matches), then $\hat{y}_j(\mathbf{g}) = \frac{1}{n}\sum_{i=1}^n y_i$ (mean training
+  target)
 
 ### Rule Set Error
 
@@ -128,8 +131,6 @@ $$
 PA(\mathbf{g}) = \exp(-2 \cdot \varepsilon(\mathbf{g}))
 $$
 
-
-
 ### Rule Set Size
 
 The rule set size is normalized and inverted:
@@ -138,16 +139,51 @@ $$C(\mathbf{g}) = \sum_{i=1}^{k} g_i$$
 
 $$CN(\mathbf{g}) = 1 - \frac{C(\mathbf{g})}{k}$$
 
-
-
 ## Instance data file
 
-Describe the format of a problem instance file.
+The instance file is provided in JSON format.
+
+Its first element "alpha" describes the weight of solution quality and solution length
+in the scalarized fitness function.
+
+The "target_values" are the ground truth from the original dataset of the supervised
+learning task.
+
+The final element is the "rule_pool", which is a list of rules.
+Each rule is made up of "local_predictions", which is a mapping of dataset entry and local 
+prediction (Hint: ideally, the rule would predict the same value as in target values, but 
+explainable local models usually make small deviations during fitting).
+When no value is suggested for a target instance, this means that a rule cannot be applied here.
+The second part of each rule is "tau", which is an estimate of its quality and how much it 
+should contribute towards global prediction.
+
+## Solution file
+
+The solution file is provided in JSON format.
+
+The "rule_set" is a vector of the length of rules in the "rule_pool".
+A "0" denotes the rule at this index not being present in the solution.
+A "1" denotes the respective rule being present.
+
+## Example
+
+This example of the problem was generated using the SupRB [1, 2] repository: https://github.com/heidmic/suprb
+
+The solution to this example was found using a relatively standard genetic algorithm although multiple other approaches have been explored for SupRB in the past [3, 4].
+
+
+### Instance
 
 ```json
 {
   "alpha": 0.3,
-  "target_values": [1.2, 2.3, 1.8, 3.1, 2.5],
+  "target_values": [
+    1.2,
+    2.3,
+    1.8,
+    3.1,
+    2.5
+  ],
   "rule_pool": [
     {
       "local_predictions": {
@@ -158,7 +194,6 @@ Describe the format of a problem instance file.
       "tau": 20.0
     },
     {
-
       "local_predictions": {
         "2": 1.9,
         "4": 2.4
@@ -178,36 +213,22 @@ Describe the format of a problem instance file.
 }
 ```
 
-## Solution file
-
-Describe the format of a solution file.
+### Solution
 
 ```json
 {
-    "rule_set": [1, 1, 0],
+  "rule_set": [
+    1,
+    1,
+    0
+  ]
 }
 ```
 
-## Example
-
-This example of the problem was generated using the SupRB [1, 2] repository: https://github.com/heidmic/suprb
-
-The solution to this example was found using a relatively standard genetic algorithm although multiple other approaches have been explored for SupRB in the past [3, 4].
-
-### Instance
-
-Provide a small example instance in the described format.
-
-
-
-### Solution
-
-Provide a feasible solution to the example instance in the described format
-(including its evaluation measure).
-
-
 
 ### Explanation
+
+![Example!](images/result.png "Example")
 
 Optionally, provide a descriptive and/or visual explanation of the solution (and
 its evaluation measure value) for the instance.
