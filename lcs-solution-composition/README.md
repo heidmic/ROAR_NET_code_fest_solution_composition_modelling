@@ -14,34 +14,11 @@ problem is based upon an existing problem licensed under those terms. Please
 provide a clear justification when opening the pull request if the problem is
 not licensed under CC-BY-4.0 -->
 
-<!-- Remove the section below before submitting -->
-
-# Problem template
-
-This folder provides a template for problem statements.
-
-Replace the problem statement below according to the instructions within that
-file (and remove this section).
-
-Place any images and figures in the `images` folder.
-
-Place instance data in the `data` folder. The organisation within that folder is
-merely a suggestion and may be adapted according to the problem needs.
-
-Place any support material (e.g., instance generators, solution evaluators,
-solution visualisers) in the `support` folder.
-
-Template follows below.
-
----
-
-<!-- Remove the section above before submitting -->
-
 # LCS Solution Composition
 
 Michael Heider, Universität Augsburg, Germany  
 Helena Stegherr, Universität Augsburg, Germany  
-Jonathatn Wurth, Universität Augsburg, Germany
+Jonathan Wurth, Universität Augsburg, Germany
 
 <!-- Put two empty spaces at the end of each author line except the last for
 proper formatting -->
