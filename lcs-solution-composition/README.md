@@ -142,9 +142,49 @@ $$CN(\mathbf{g}) = 1 - \frac{C(\mathbf{g})}{k}$$
 
 Describe the format of a problem instance file.
 
+```json
+{
+  "alpha": 0.3,
+  "target_values": [1.2, 2.3, 1.8, 3.1, 2.5],
+  "rule_pool": [
+    {
+      "local_predictions": {
+        "0": 1.3,
+        "1": 2.1,
+        "3": 3.0
+      },
+      "tau": 20.0
+    },
+    {
+
+      "local_predictions": {
+        "2": 1.9,
+        "4": 2.4
+      },
+      "tau": 25.0
+    },
+    {
+      "local_predictions": {
+        "0": 1.2,
+        "1": 2.3,
+        "2": 1.8,
+        "3": 3.1
+      },
+      "tau": 40000.0
+    }
+  ]
+}
+```
+
 ## Solution file
 
 Describe the format of a solution file.
+
+```json
+{
+    "rule_set": [1, 1, 0],
+}
+```
 
 ## Example
 
@@ -152,10 +192,14 @@ Describe the format of a solution file.
 
 Provide a small example instance in the described format.
 
+
+
 ### Solution
 
 Provide a feasible solution to the example instance in the described format
 (including its evaluation measure).
+
+
 
 ### Explanation
 
