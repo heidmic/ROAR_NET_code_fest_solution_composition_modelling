@@ -65,6 +65,8 @@ or HEROS [6] https://doi.org/10.1145/3712256.3726461.
 This problem statement describes the combinatorial optimization problem that
 both systems have to solve to provide an accurate yet compact solution.
 
+![SupRB Visualisaation!](images/suprb_visualisation_ccby.png "SupRB Visualisation")
+
 ## Task
 
 Given a set of rules, select a minimal subset that can still make good
@@ -230,8 +232,14 @@ The solution to this example was found using a relatively standard genetic algor
 
 ![Example!](images/result.png "Example")
 
-Optionally, provide a descriptive and/or visual explanation of the solution (and
-its evaluation measure value) for the instance.
+This is a 1-D Higdon-Gramacy-Lee function with a noise-level of 0.1 (normally distributed).
+It is sampled 1000 times (blue dots), the red lines correspond to localized rule predictions
+to approximate the function.
+It was selected as a subset of a larger collection of rules.
+
+The image shows solutions to four different instances.
+
+In the "data" folder, there are five different instances with five corresponding solutions available.
 
 ## Acknowledgements
 
