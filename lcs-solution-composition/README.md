@@ -148,10 +148,7 @@ Alternatively, the indices of the selected rules can be provided.
 
 ## Example
 
-This example of the problem was generated using the SupRB [1, 2] repository: https://github.com/heidmic/suprb
-
-The solution to this example was found using a relatively standard genetic algorithm although multiple other approaches have been explored for SupRB in the past [3, 4].
-
+A small test example is provided here to showcase the file structure.
 
 ### Instance
 
@@ -219,6 +216,10 @@ It was selected as a subset of a larger collection of rules.
 The image shows solutions to four different instances.
 
 In the "data" folder, there are five different instances with five corresponding solutions available.
+
+The instances were generated using the SupRB [1, 2] repository: https://github.com/heidmic/suprb
+
+The solution to this example was found using a relatively standard genetic algorithm although multiple other approaches have been explored for SupRB in the past [3, 4].
 
 ## Acknowledgements
 
