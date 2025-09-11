@@ -61,7 +61,7 @@ learning algorithm that constructs solutions to the learning task as a finite
 set of rules each approximating a share of the input space. Some LCSs separate 
 the discovery of rules from the final composition of the model returned by the 
 training process, e.g. SupRB [1, 2] https://doi.org/10.1145/3520304.3529014 
-or HEROS https://doi.org/10.1145/3712256.3726461. 
+or HEROS [6] https://doi.org/10.1145/3712256.3726461. 
 
 This problem statement describes the combinatorial optimization problem that
 both systems have to solve to provide an accurate yet compact solution.
@@ -232,3 +232,5 @@ relevant. -->
 [4] Michael Heider, Maximilian Krischan, Roman Sraj and Jörg Hähner. 2024 Exploring Self-Adaptive Genetic Algorithms to Combine Compact Sets of Rules. In Proceedings of the 2024 IEEE Congress on Evolutionary Computation (CEC). https://doi.org/10.1109/CEC60901.2024.10612101.
 
 [5] Michael Heider, David Pätzel, Helena Stegherr, Jörg Hähner. 2023. A Metaheuristic Perspective on Learning Classifier Systems. In: Eddaly, M., Jarboui, B., Siarry, P. (eds) Metaheuristics for Machine Learning. Computational Intelligence Methods and Applications. Springer, Singapore. https://doi.org/10.1007/978-981-19-3888-7_3
+
+[6] Gabe Lipschutz-Villa, Harsh Bandhey, Ruonan Yin, Malek Kamoun, Ryan Urbanowicz. 2025. Rule-based Machine Learning: Separating Rule and Rule-Set Pareto-Optimization for Interpretable Noise-Agnostic Modeling GECCO '25: Proceedings of the Genetic and Evolutionary Computation Conference. 407-415.
