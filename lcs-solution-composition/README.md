@@ -78,7 +78,7 @@ The rules are precomputed and remain fixed during solution composition.
 
 Given
 
-- Training data $(X, y)$ with input $X \in \mathbb{R}^{n \times d}$, target $y \in \mathbb{R}^n$
+- Training data $(X, y)$ with input $X \in \mathbb{R}^{n \times d}$ and target $y \in \mathbb{R}^n$
 - Rule pool $\mathbf{R} = \{r_1, r_2, ..., r_k\}$ with $k$ rules
 
 where each rule $r_i$ has
@@ -88,15 +88,19 @@ where each rule $r_i$ has
 - Experience: $e_i = \sum_{j=1}^{n} m_{ij}$ (number of matched samples)
 - Error: $\varepsilon_i = \text{MSE}(y_i, \hat{y}_i)$ on its matched data
 
-find a set of rules $\mathbf{g} \in \{0,1\}^k$, where $g_i = 1$ if $r_i$ is included, that minimizes a combination of error and size of the rule set:
+find the set of rules $\mathbf{g}^*$ that minimizes the prediction error while keeping the set as small as possible:
 
 $$
 f(\mathbf{g}) = \frac{(1 + \alpha^2) \cdot PA(\mathbf{g}) \cdot CN(\mathbf{g})}{\alpha^2 \cdot PA(\mathbf{g}) + CN(\mathbf{g})} \,,
 $$
 
-where $\alpha = 0.3$ is the scalarization weight.
+$$
+\mathbf{g}^* \in \arg\max_{\mathbf{g}} f(\mathbf{g})
+$$
 
-### Mixed Rule Set Prediction
+where $\mathbf{g} \in \{0,1\}^k$ represents a rule set, with $g_i = 1$ if $r_i$ is included, and $\alpha = 0.3$ is the scalarization weight that decides relative influence of error and rule set size.
+
+### Rule Set Prediction
 
 For training sample $j$, the prediction of the rule set is
 
@@ -110,7 +114,7 @@ where
 
 
 
-### Mixed Rule Set Error
+### Rule Set Error
 
 The error $\varepsilon$ is inverted using an exponential transformation:
 
