@@ -1,4 +1,4 @@
-<!--
+<img width="2560" height="1440" alt="grafik" src="https://github.com/user-attachments/assets/bd044619-b262-4def-a7d3-e9cc6dee1ccc" /><!--
 SPDX-FileCopyrightText: 2025 Michael Heider <michael.heider@uni-a.de>, Helena Segherr, Jonathan Wurth 
 
 SPDX-License-Identifier: CC-BY-4.0
@@ -56,12 +56,12 @@ consistent with the comment at the beginning of the markdown file -->
 
 ## Introduction
 
-Learning Classifier Systems (LCSs) are a type of evolutionary machine learning 
-algorithm that constructs solutions to the learning task as a finite set of 
-rules each approximating a share of the input space. Some LCSs separate the 
-discovery of rules from the final composition of the model returned by the 
-training process, e.g. SupRB https://doi.org/10.1145/3520304.3529014 or 
-HEROS https://doi.org/10.1145/3712256.3726461. 
+Learning Classifier Systems (LCSs) [5] are a type of evolutionary machine 
+learning algorithm that constructs solutions to the learning task as a finite 
+set of rules each approximating a share of the input space. Some LCSs separate 
+the discovery of rules from the final composition of the model returned by the 
+training process, e.g. SupRB [1, 2] https://doi.org/10.1145/3520304.3529014 
+or HEROS https://doi.org/10.1145/3712256.3726461. 
 
 This problem statement describes the combinatorial optimization problem that
 both systems have to solve to provide an accurate yet compact solution.
@@ -73,7 +73,9 @@ predictions.
 
 ## Detailed description
 
-It is a non-linear subset selection optimization problem over local regression rules where the error term depends on the weighted mixture of predictions from selected rules.
+It is a non-linear subset selection optimization problem over local regression 
+rules where the error term depends on the weighted mixture of predictions 
+from selected rules. 
 The rules are precomputed and remain fixed during solution composition.
 
 Given
@@ -188,6 +190,10 @@ Describe the format of a solution file.
 
 ## Example
 
+This example of the problem was generated using the SupRB [1, 2] repository: https://github.com/heidmic/suprb
+
+The solution to this example was found using a relatively standard genetic algorithm although multiple other approaches have been explored for SupRB in the past [3, 4].
+
 ### Instance
 
 Provide a small example instance in the described format.
@@ -217,4 +223,12 @@ relevant. -->
 
 ## References
 
-Put any relevant references here.
+[1] Michael Heider, Helena Stegherr, Jonathan Wurth, Roman Sraj, and Jörg Hähner. 2022. Separating Rule Discovery and Global Solution Composition in a Learning Classifier System. In Genetic and Evolutionary Computation Conference Companion (GECCO ’22 Companion). https://doi.org/10.1145/3520304.3529014
+
+[2] Michael Heider, Helena Stegherr, Roman Sraj, David Pätzel, Jonathan Wurth and Jörg Hähner. 2023. SupRB in the context of rule-based machine learning methods: a comparative study. Applied Soft Computing 147, 110706. DOI: 10.1016/j.asoc.2023.110706
+
+[3] Jonathan Wurth, Michael Heider, Helena Stegherr, Roman Sraj, and Jörg Hähner. 2022. Comparing different Metaheuristics for Model Selection in a Supervised Learning Classifier System. In Genetic and Evolutionary Computation Conference Companion (GECCO ’22 Companion). https://doi.org/10.1145/3520304.3529015
+
+[4] Michael Heider, Maximilian Krischan, Roman Sraj and Jörg Hähner. 2024 Exploring Self-Adaptive Genetic Algorithms to Combine Compact Sets of Rules. In Proceedings of the 2024 IEEE Congress on Evolutionary Computation (CEC). https://doi.org/10.1109/CEC60901.2024.10612101.
+
+[5] Michael Heider, David Pätzel, Helena Stegherr, Jörg Hähner. 2023. A Metaheuristic Perspective on Learning Classifier Systems. In: Eddaly, M., Jarboui, B., Siarry, P. (eds) Metaheuristics for Machine Learning. Computational Intelligence Methods and Applications. Springer, Singapore. https://doi.org/10.1007/978-981-19-3888-7_3
