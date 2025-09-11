@@ -1,4 +1,4 @@
-<img width="2560" height="1440" alt="grafik" src="https://github.com/user-attachments/assets/bd044619-b262-4def-a7d3-e9cc6dee1ccc" /><!--
+<!--
 SPDX-FileCopyrightText: 2025 Michael Heider <michael.heider@uni-a.de>, Helena Segherr, Jonathan Wurth 
 
 SPDX-License-Identifier: CC-BY-4.0
