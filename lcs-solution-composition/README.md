@@ -132,7 +132,7 @@ The final element is the "rule_pool", which is a list of rules.
 Each rule is made up of "local_predictions", which is a mapping of dataset entry and local 
 prediction (Hint: ideally, the rule would predict the same value as in target values, but 
 explainable local models usually make small deviations during fitting).
-When no value is suggested for a target instance, this means that a rule cannot be applied here.
+When no value is suggested for a target sample, this means that a rule cannot be applied here.
 The second part of each rule is "tau", which is an estimate of its quality and how much it 
 should contribute towards global prediction.
 
@@ -143,6 +143,8 @@ The solution file is provided in JSON format.
 The "rule_set" is a vector of the length of rules in the "rule_pool".
 A "0" denotes the rule at this index not being present in the solution.
 A "1" denotes the respective rule being present.
+
+Alternatively, the indices of the selected rules can be provided.
 
 ## Example
 
