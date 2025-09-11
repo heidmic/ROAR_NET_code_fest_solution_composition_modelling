@@ -119,12 +119,14 @@ where
 The error $\varepsilon$ is inverted using an exponential transformation:
 
 $$
-PA(\mathbf{g}) = \exp(-2 \cdot \varepsilon(\mathbf{g}))
+\varepsilon(\mathbf{g}) = \frac{1}{m} \sum_{j=1}^{m} (y_j - \hat{y}_j(\mathbf{g}))^2
 $$
 
 $$
-\varepsilon(\mathbf{g}) = \frac{1}{m} \sum_{j=1}^{m} (y_j - \hat{y}_j(\mathbf{g}))^2
+PA(\mathbf{g}) = \exp(-2 \cdot \varepsilon(\mathbf{g}))
 $$
+
+
 
 ### Rule Set Size
 
